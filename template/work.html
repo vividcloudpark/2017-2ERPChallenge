@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+	<div class="container">
+    <span class="margin-top: 20px;"><h1>Contact</h1></span>
+    </div>
+
+
+
+    <div class="jumbotron">
+
+        <div class="container">
+        <h1 class="display-3">GBI CONTACT</h1>
+            <h1 class="display-3">DB FINDER</h1>
+
+
+            <hr class="my-4">
+            <p class="lead">
+
+            <form action="{% url 'work_success' %}", method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                   <div class="container">
+                    <label class="col-form-label" for="formGroupExampleInput">Find by Company name **YOU SHOULD TYPE BY UPPERCASE!!!!***</label>
+                    <input type="text" class="form-control" maxlength = "20" name="Companyname" placeholder="example) GBI BIKE">
+                <br>
+                <button type="submit" class="btn btn-primary btn-lg">GET INFORMATION BY COMPANY NAME!</button>
+            </div>
+            </div>
+        </form>
+    </div>
+    </div>
+
+{% endblock %}
+
+

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<div class="container">
+    <span class="margin-top: 20px;"><h1>Contact</h1></span>
+    </div>
+
+
+
+    <div class="jumbotron">
+
+        <div class="container">
+        <h1 class="display-3">Do you have Question </h1>
+            <h1 class="display-3">About <strong>GBI Bike</strong>?</h1>
+        <p class="lead">HERE WE ARE!</p>
+        <hr class="my-4">
+        <p></p>
+            <p>WE'LL BACK TO YOU ASAP!</p>
+            <hr class="my-4">
+            <p class="lead">
+
+            <form action="{% url 'contact_success' %}", method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                    <label class="col-form-label" for="formGroupExampleInput">Company name **YOU SHOULD TYPE BY UPPERCASE!!!!***</label>
+                    <input type="text" class="form-control" maxlength = "20" name="Companyname" placeholder="example) GBI BIKE">
+                    <label class="col-form-label">E-mail Address</label>
+                    <input type="email" class="form-control" name='email' placeholder="name@example.com">
+                    <label class="col-form-label" for="formGroupExampleInput2">Contrycode</label>
+                    <input type="text" class="form-control" maxlength = "2"  style="text-transform: uppercase;" name="contact_country" placeholder="example) DE">
+                    <label class="col-form-label" for="formGroupExampleInput2">Order Number(Optional, But we can find you much easily!)</label>
+                    <input type="text" class="form-control" name="order_number" maxlength = "6" placeholder="example) 9124124">
+                    <label for="exampleFormControlTextarea1">Question</label>
+                    <textarea class="form-control" maxlength = "200" name="contact_question" rows="3"></textarea>
+                </div>
+            <button type="submit" class="btn btn-primary btn-lg">SUBMIT!</button>
+        </form>
+    </div>
+    </div>
+
+{% endblock %}
