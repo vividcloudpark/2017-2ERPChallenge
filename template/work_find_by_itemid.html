@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+	<div class="container">
+    <span class="margin-top: 20px;"><h1>GBI DBFINDER</h1></span>
+    </div>
+
+
+
+    <div class="jumbotron">
+        <div class="container">
+        <h1 class="display-3">Here is data about {{ tag }}! </h1>
+        <p class="lead">SEE THE BELOW DATA</p>
+        <hr class="my-4">
+
+            <hr class="my-4">
+            <p class="lead">
+
+            <p> HERE IS DATA ABOUT {{ tag }} </p>
+
+
+            <table class="table-dark table-responsive-lg">
+                <tr class=" btn-md-6">
+                    <td>Item name : </td>
+                    <td>{{ name }}</td>
+                </tr>
+
+                <tr>
+                    <td>Item price : </td>
+                    <td>{{ price }}</td>
+                </tr>
+
+                  <tr>
+                    <td>Item origin : </td>
+                    <td>{{ origin }}</td>
+                </tr>
+
+            </table>
+
+    </div>
+    </div>
+
+{% endblock %}
+

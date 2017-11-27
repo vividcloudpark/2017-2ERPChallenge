@@ -18,15 +18,28 @@
 
             <hr class="my-4">
             <p class="lead">
-
-            <form action="{% url 'work_success' %}", method="POST">
+            <p> *Be careful! All finder are case-sensitive.</p>
+            <form action="{% url 'work_find_by_company' %}", method="POST">
             {% csrf_token %}
             <div class="form-group">
                    <div class="container">
-                    <label class="col-form-label" for="formGroupExampleInput">Find by Company name **YOU SHOULD TYPE BY UPPERCASE!!!!***</label>
-                    <input type="text" class="form-control" maxlength = "20" name="Companyname" placeholder="example) GBI BIKE">
+                    <label class="col-form-label" for="formGroupExampleInput">Find by Company name</label>
+                    <input type="text" class="form-control" maxlength = "20" name="Companyname" placeholder="example) BAVARIA BIKES">
                 <br>
                 <button type="submit" class="btn btn-primary btn-lg">GET INFORMATION BY COMPANY NAME!</button>
+
+                   </div>
+            </div>
+                </form>
+
+                       <form action="{% url 'work_find_by_itemid' %}", method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                   <div class="container">
+                    <label class="col-form-label" for="formGroupExampleInput">Find by Item Id</label>
+                    <input type="text" class="form-control" maxlength = "20" name="itemid" placeholder="example) CCWH1000">
+                <br>
+                <button type="submit" class="btn btn-primary btn-lg">GET ITEM INFORMATION BY ITEM ID!</button>
             </div>
             </div>
         </form>

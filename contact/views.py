@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import Http404
 from .models import Contact
 from .models import Retailer
+from .models import Item
 import json
 
 
@@ -29,7 +30,7 @@ def contact_success(request):
     return render(request, 'contact_success.html')
 
 
-def work_success(request):
+def work_find_by_company(request):
     tag = request.POST['Companyname']
     try:
         retailertag = Retailer.objects.get(pk=tag)
@@ -43,5 +44,22 @@ def work_success(request):
         data = "Sorry! DBFINDER couldn't find about    " + tag + " !"
 
     print(data)
-    return render(request, 'work_success.html', {'name' : name , 'address' : address,
+    return render(request, 'work_find_by_company.html', {'name' : name , 'address' : address,
                                                  'zipcode' : zipcode,'country' : country, 'tag': tag})
+
+def work_find_by_itemid(request):
+    tag = request.POST['itemid']
+    try:
+        itemtag = Item.objects.get(pk=tag)
+        data = itemtag.dic()
+        name = data['item_name']
+        price = data['item_price']
+        origin = data['item_origin']
+
+    except:
+        return Http404("Sorry! DBFINDER couldn't find about    " + tag + " !")
+
+    print(data)
+    return render(request, 'work_find_by_itemid.html', {'name' : name , 'price' : price,
+                                                 'origin' : origin, 'tag': tag})
+
