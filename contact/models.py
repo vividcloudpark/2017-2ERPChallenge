@@ -62,3 +62,10 @@ class Contact (models.Model):
     def __str__(self):
         return "Question from  " + self.contact_company_name
 
+class Comment(models.Model):
+    comment_id =  models.AutoField(primary_key=True)
+    comment_contents = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Contact, on_delete=models.CASCADE)
+    created_time = models.DateTimeField(auto_now_add=True)
+

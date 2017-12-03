@@ -3,6 +3,9 @@ from django.shortcuts import Http404
 from .models import Contact
 from .models import Retailer
 from .models import Item
+from .models import Comment
+from django.contrib.auth.models import User
+from django.shortcuts import redirect
 import json
 
 
@@ -63,3 +66,11 @@ def work_find_by_itemid(request):
     return render(request, 'work_find_by_itemid.html', {'name' : name , 'price' : price,
                                                  'origin' : origin, 'tag': tag})
 
+def post_comment(request):
+    if request.method == "POST":
+        id = request.POST["#"]
+        comment = request.POST["comment"]
+        user = User.objects.get(username=#)
+        comment = Comment.objects.create(comment_contents=comment, user=user, bookmark=bookmark)
+        comment.save()
+        return redirect("/post_comment"+id)

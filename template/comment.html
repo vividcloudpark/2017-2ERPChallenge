@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    {% for comment in comments %}
+        <h4 class="media-heading user_name">{{ comment.user.username }}</h4>
+        {{ comment.comment_contents}}
+    {% endfor %}
+</div>
+<div class="container">
+    <form method="POST" action="{% url 'post_comment' %}">
+        {% csrf_token %}
+        <div class="container">
+            <label for="comment">Comment:</label>
+        </div>
+        <div class="container">
+            <input type="text" class="form-control" id="comment" name="comment" />
+            <input type="hidden" name="bookmark_id" value="{{ # }}">
+        </div>
+        <div class="container">
+            <button type="submit" class="btn btn-success">Post</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
