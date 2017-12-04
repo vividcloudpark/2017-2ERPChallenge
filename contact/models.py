@@ -37,7 +37,7 @@ class Retailer (models.Model):
 
 class Order (models.Model):
     order_id = models.CharField(max_length=6, primary_key=True, unique=True)
-    item_id = models.ForeignKey(Item)
+    item_id = models.ForeignKey(Item, on_delete=models.CASCADE)
     shipping_address = models.TextField(max_length=200)
     shipping_zipcode = models.CharField(max_length=6)
     shipping_country = models.CharField(max_length=2)
