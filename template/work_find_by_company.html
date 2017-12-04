@@ -18,28 +18,59 @@
 
             <p> HERE IS DATA ABOUT {{ tag }} </p>
 
+            {% if data %}
+
             <table class="table-dark table-responsive-lg">
                 <tr class=" btn-md-6">
-                    <td>Company name : </td>
-                    <td>{{ name }}</td>
+                    <td>Company name  : </td>
+                    <td>{{ data.company_name }}</td>
                 </tr>
 
                 <tr>
                     <td>Company address : </td>
-                    <td>{{ address }}</td>
+                    <td>{{ data.company_address }}</td>
                 </tr>
 
                   <tr>
                     <td>Company zipcode : </td>
-                    <td>{{ zipcode }}</td>
+                    <td>{{ data.company_zipcode }}</td>
                 </tr>
 
                   <tr>
                     <td>Company Countrycode : </td>
-                    <td>{{ country }}</td>
+                    <td>{{ data.company_country }}</td>
                 </tr>
 
             </table>
+        {% endif %}
+
+        {% if contact %}
+            <p><h1> Most resent inquery from {{ contact.contact_company_name }} </h1></p>
+
+            <table class="table-dark table-responsive-lg">
+                <tr class=" btn-md-6">
+                    <td>Contact date  : </td>
+                    <td>{{ contact.contact_time }}</td>
+                </tr>
+
+                <tr>
+                    <td>Order number : </td>
+                    <td>{{ contact.order_number }}</td>
+                </tr>
+
+                  <tr>
+                    <td>Reply email : </td>
+                    <td>{{ contact.customer_email }}</td>
+                </tr>
+
+                  <tr>
+                    <td>Content : </td>
+                    <td>{{ contact.contact_question }}</td>
+                </tr>
+
+            </table>
+
+        {% endif %}
 
     </div>
     </div>

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+	<div class="container">
+    <span class="margin-top: 20px;"><h1>GBI DBFINDER</h1></span>
+    </div>
+
+
+
+    <div class="jumbotron">
+        <div class="container">
+        <h1 class="display-3">Here is data about {{ tag }}! </h1>
+        <p class="lead">SEE THE BELOW DATA</p>
+        <hr class="my-4">
+
+            <hr class="my-4">
+            <p class="lead">
+            <p> HERE IS DATA ABOUT {{ tag }} </p>
+
+            {% block result %}
+{#            {% url 'work_find_by_itemid' %}#}
+
+            {% endblock %}
+
+    </div>
+    </div>
+
+{% endblock %}
+

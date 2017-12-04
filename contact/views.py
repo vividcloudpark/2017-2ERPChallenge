@@ -32,34 +32,47 @@ def contact_success(request):
 
 def work_find_by_company(request):
     tag = request.POST['Companyname']
-    try:
-        retailertag = Retailer.objects.get(pk=tag)
-        data = retailertag.dic()
-        name = data['company_name']
-        address = data['company_address']
-        zipcode = data['company_zipcode']
-        country = data['company_country']
+    contact_results = Contact.objects.filter(contact_company_name = tag).exists()
+    retailer_results = Retailer.objects.filter(pk=tag).exists()
 
-    except:
-        data = "Sorry! DBFINDER couldn't find about    " + tag + " !"
+    if retailer_results or contact_results != False:
+        if retailer_results != False and contact_results == False:
+            retailertag = Retailer.objects.get(pk=tag)
+            data = retailertag.dic()
+            return render(request, 'work_find_by_company.html', {'tag': tag, 'data': data})
 
-    print(data)
-    return render(request, 'work_find_by_company.html', {'name' : name , 'address' : address,
-                                                 'zipcode' : zipcode,'country' : country, 'tag': tag})
+        elif retailer_results == False and contact_results != False:
+            contact_data = []
+            for i in Contact.objects.filter(contact_company_name=tag):
+                contact_tag = i
+                temp_data = contact_tag.dic()
+                contact_data.append(temp_data)
+            return render(request, 'work_find_by_company.html', {'tag': tag, 'contact': contact_data[0]})
+
+        else:
+            retailertag = Retailer.objects.get(pk=tag)
+            data = retailertag.dic()
+            contact_data = []
+            for i in Contact.objects.filter(contact_company_name=tag):
+                contact_tag = i
+                temp_data = contact_tag.dic()
+                contact_data.append(temp_data)
+            return render(request, 'work_find_by_company.html', {'tag': tag, 'data': data, 'contact': contact_data[0]})
+
+
+    else:
+        raise Http404("Sorry! DBFINDER couldn't find about    " + tag + " !")
+
 
 def work_find_by_itemid(request):
     tag = request.POST['itemid']
     try:
         itemtag = Item.objects.get(pk=tag)
         data = itemtag.dic()
-        name = data['item_name']
-        price = data['item_price']
-        origin = data['item_origin']
 
     except:
         return Http404("Sorry! DBFINDER couldn't find about    " + tag + " !")
 
     print(data)
-    return render(request, 'work_find_by_itemid.html', {'name' : name , 'price' : price,
-                                                 'origin' : origin, 'tag': tag})
+    return render(request, 'work_find_by_itemid.html', {'tag': tag, 'data' : data})
 

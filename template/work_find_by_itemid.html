@@ -16,23 +16,22 @@
             <hr class="my-4">
             <p class="lead">
 
-            <p> HERE IS DATA ABOUT {{ tag }} </p>
-
+            <p> HERE IS DATA ABOUT {{ data.item_id }} </p>
 
             <table class="table-dark table-responsive-lg">
                 <tr class=" btn-md-6">
                     <td>Item name : </td>
-                    <td>{{ name }}</td>
+                    <td>{{ data.item_name }}</td>
                 </tr>
 
                 <tr>
                     <td>Item price : </td>
-                    <td>{{ price }}</td>
+                    <td>{{ data.item_price }}</td>
                 </tr>
 
                   <tr>
                     <td>Item origin : </td>
-                    <td>{{ origin }}</td>
+                    <td>{{ data.item_origin }}</td>
                 </tr>
 
             </table>

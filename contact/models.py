@@ -62,3 +62,11 @@ class Contact (models.Model):
     def __str__(self):
         return "Question from  " + self.contact_company_name
 
+    def dic(self):
+        fields = ['contact_company_name', 'customer_email', 'order_number', 'contact_question', 'contact_time']
+        result = {}
+        for field in fields:
+            result[field] = self.__dict__[field]
+        return result
+
+
